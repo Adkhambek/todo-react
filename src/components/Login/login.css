@@ -1,0 +1,24 @@
+.login {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  width: 25%;
+  margin: 10rem auto;
+  padding: 3rem;
+}
+
+.login__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login__form label {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.login__form .submit {
+  margin-top: 2rem;
+  width: 100%;
+}
