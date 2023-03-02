@@ -4,7 +4,7 @@ import './login.css';
 function Login() {
   return (
     <div className="login">
-      <h1 className="login">Login</h1>
+      <h1 className="title">Login</h1>
       <form className="login__form">
         <label htmlFor="username">
           <p>Username:</p>
