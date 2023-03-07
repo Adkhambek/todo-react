@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Login from './pages/Login';
 import Main from './pages/Main';
 import Users from './pages/Users';
+import { UserInterface } from './types';
 import fetchData from './utils/fetchData';
 import ProtectedRoute from './utils/protectedRoute';
 
@@ -26,8 +27,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={!user ? <Login /> : <Navigate to="main" />} />
-
+      <Route path="/" element={<Login user={user} />} />
       <Route element={<Header />}>
         <Route
           path="/main"
@@ -41,7 +41,7 @@ function App() {
           path="/users"
           element={
             <ProtectedRoute user={user}>
-              <Users />
+              <Users user={user} />
             </ProtectedRoute>
           }
         />

@@ -1,14 +1,20 @@
 import React, { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import fetchData from '../../utils/fetchData';
 import 'react-toastify/dist/ReactToastify.css';
 import './login.css';
 
-function Login() {
+function Login(props: any) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const isAuth = props?.user?.ok;
+
+  if (isAuth) {
+    return <Navigate to="/main" />;
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();

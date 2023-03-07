@@ -5,9 +5,6 @@ function ProtectedRoute({ user, children }: any) {
   if (!user) {
     return <Navigate to="/" replace />;
   }
-  if (user.role !== 'admin') {
-    return <Navigate to="/main" replace />;
-  }
   return children;
 }
 
