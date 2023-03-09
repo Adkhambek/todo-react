@@ -2,17 +2,18 @@ import React, { useState, FormEvent } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import fetchData from '../../utils/fetchData';
+import 'react-toastify/dist/ReactToastify.css';
 import './login.css';
 
-function Login({user}: any) {
+function Login(props: any) {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const isAuth = props?.user?.ok;
 
-
-  if (user) {
-    return <Navigate to="/" />;
+  if (isAuth) {
+    return <Navigate to="/main" />;
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -25,8 +26,7 @@ function Login({user}: any) {
     if (!result.ok) {
       toast.error(result.message);
     } else {
-      window.location.reload();
-      navigate('/');
+      navigate('/main');
     }
   }
 
@@ -59,7 +59,7 @@ function Login({user}: any) {
           Submit
         </button>
       </form>
-
+      <ToastContainer />
     </div>
   );
 }

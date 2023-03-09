@@ -6,8 +6,8 @@ import './users.css';
 function Users(props: any) {
   const user = props?.user?.data;
 
-  if (user?.role !== 'admin') {
-    return <Navigate to="/" />;
+  if (user.role !== 'admin') {
+    return <Navigate to="/main" />;
   }
 
   return (

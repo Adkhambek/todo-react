@@ -1,7 +1,7 @@
 import { BodyType } from '../types';
 import CustomError from './CustomError';
 
-async function fetchData(dir: string, method: string, body?: any) {
+async function fetchData(dir: string, method: string, body?: BodyType) {
   const url = `http://localhost:3000/api/v1/${dir}`;
 
   const options: RequestInit = {

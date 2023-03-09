@@ -6,7 +6,6 @@ import './header.css';
 
 function Header() {
   const navigate = useNavigate();
-  const path = window.location.pathname;
   const [user, setUser] = useState<UserInterface | null>(null);
 
   async function fetchUser() {
@@ -16,9 +15,11 @@ function Header() {
   }
 
   async function handleLogout() {
-    await fetchData('logout', 'POST');
-    navigate('/login');
-    window.location.reload();
+    const result = await fetchData('logout', 'POST');
+
+    if (!result.ok) {
+      navigate('/');
+    }
   }
 
   useEffect(() => {
@@ -30,17 +31,9 @@ function Header() {
       <header>
         <nav className="nav">
           {user && user.role === 'admin' && (
-            <div className="double-nav-links">
-              {path === '/users' && (
-                <Link className="nav-link" to="/">
-                  Back
-                </Link>
-              )}
-
-              <Link className="nav-link" to="/users">
-                Users
-              </Link>
-            </div>
+            <Link className="nav-link" to="/users">
+              Users
+            </Link>
           )}
           <button
             className="nav-link nav-btn"

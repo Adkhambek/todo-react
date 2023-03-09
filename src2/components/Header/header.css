@@ -1,6 +1,8 @@
-.nav {
+header {
   display: flex;
   justify-content: end;
+}
+.nav {
   padding: 3rem;
 }
 .nav-link {
@@ -17,10 +19,6 @@
   cursor: pointer;
 }
 
-.nav-link {
+.nav-link:first-child {
   margin-right: 2rem;
-}
-
-.double-nav-links {
-  display: flex;
 }
